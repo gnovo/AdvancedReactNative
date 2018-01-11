@@ -1,9 +1,9 @@
 const admin = require('firebase-admin');
 
-module.exports = (req, res) => {
+module.exports = function(req, res) {
   // Verify the user provided a phone
   if (!req.body.phone) {
-  	return res.status(422).send({ error: 'Bad Input' });
+    return res.status(422).send({ error: 'Bad Input' });
   }
 
   // Format the phone number to remove dashes and parens
@@ -15,5 +15,4 @@ module.exports = (req, res) => {
     .catch(err => res.status(422).send({ error: err }));
 
   // Respond to the user request, saying the account was made
-
 }
